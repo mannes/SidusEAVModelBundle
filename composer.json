@@ -15,6 +15,12 @@
             "email": "vincent@sidus.fr",
             "homepage": "http://chalnot.fr",
             "role": "Developer"
+        },
+        {
+            "name": "Mannes Brak",
+            "email": "mannes@krukje.nl",
+            "homepage": "https://warmvle.es",
+            "role": "Developer"
         }
     ],
     "autoload": {
