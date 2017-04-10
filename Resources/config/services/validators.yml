@@ -4,7 +4,7 @@ services:
         arguments:
             - '%sidus_eav_model.entity.data.class%'
             - '@sidus_eav_model.family_configuration.handler'
-            - '@translator'
-            - '@doctrine'
+            - '@sidus_eav_model.translator'
+            - '@sidus_eav_model.doctrine'
         tags:
             - { name: validator.constraint_validator }

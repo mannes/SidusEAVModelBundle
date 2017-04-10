@@ -111,7 +111,7 @@ class SidusEAVModelExtension extends Extension
                 $familyConfiguration,
             ]
         );
-        $definition->addMethodCall('setTranslator', [new Reference('translator')]);
+        $definition->addMethodCall('setTranslator', [new Reference('sidus_eav_model.translator')]);
         $definition->addTag('sidus.family');
         $container->setDefinition('sidus_eav_model.family.'.$code, $definition);
     }
