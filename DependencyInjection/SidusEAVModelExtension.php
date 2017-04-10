@@ -96,7 +96,7 @@ class SidusEAVModelExtension extends Extension
             new Reference('sidus_eav_model.context.manager'),
             $familyConfiguration,
         ]);
-        $definition->addMethodCall('setTranslator', [new Reference('translator')]);
+        $definition->addMethodCall('setTranslator', [new Reference('sidus_eav_model.translator')]);
         $definition->addTag('sidus.family');
         $container->setDefinition('sidus_eav_model.family.'.$code, $definition);
     }
@@ -121,7 +121,7 @@ class SidusEAVModelExtension extends Extension
             $attributeConfiguration,
         ];
         $definition = new Definition(new Parameter('sidus_eav_model.attribute.class'), $definitionOptions);
-        $definition->addMethodCall('setTranslator', [new Reference('translator')]);
+        $definition->addMethodCall('setTranslator', [new Reference('sidus_eav_model.translator')]);
         $definition->addTag('sidus.attribute');
         $container->setDefinition('sidus_eav_model.attribute.'.$code, $definition);
     }

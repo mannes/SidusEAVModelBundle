@@ -9,7 +9,7 @@ services:
         class: '%sidus_eav_model.form.type.data.class%'
         arguments: ['@sidus_eav_model.family_configuration.handler', '%sidus_eav_model.entity.data.class%', '%sidus_eav_model.form.collection_type%']
         calls:
-            - [setTranslator, ['@translator']]
+            - [setTranslator, ['@sidus_eav_model.translator']]
         tags:
             - { name: form.type, alias: sidus_data }
 

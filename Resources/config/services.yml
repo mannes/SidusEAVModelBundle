@@ -14,6 +14,10 @@ parameters:
     sidus_eav_model.context.manager.class: Sidus\EAVModelBundle\Context\ContextManager
 
 services:
+    sidus_eav_model.translator: "@translator"
+
+    sidus_eav_model.doctrine: "@doctrine"
+
     sidus_eav_model.attribute_type_configuration.handler:
         class: '%sidus_eav_model.attribute_type_configuration.handler.class%'
 
@@ -28,13 +32,13 @@ services:
     sidus_eav_model.doctrine.repository.data:
         class: '%sidus_eav_model.doctrine.repository.data.class%'
         factory:
-            - '@doctrine'
+            - '@sidus_eav_model.doctrine'
             - 'getRepository'
         arguments: ['%sidus_eav_model.entity.data.class%']
 
     sidus_eav_model.validator.sidus_data:
         class: '%sidus_eav_model.validator.sidus_data.class%'
-        arguments: ['%sidus_eav_model.entity.data.class%', '@sidus_eav_model.family_configuration.handler', '@translator', '@doctrine']
+        arguments: ['%sidus_eav_model.entity.data.class%', '@sidus_eav_model.family_configuration.handler', '@sidus_eav_model.translator', '@sidus_eav_model.doctrine']
         tags:
             - { name: validator.constraint_validator, alias: sidus_data }
 
