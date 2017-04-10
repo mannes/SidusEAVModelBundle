@@ -113,8 +113,8 @@ class DataValidator extends ConstraintValidator
             /** @var DataRepository $repo */
             $repo = $this->doctrine->getRepository($data->getFamily()->getDataClass());
             $result = $repo->findByIdentifier($data->getFamily(), $valueData);
-            if ($result && $result->getId() !== $data->getId()) {
-                $this->buildAttributeViolation($data, $context, $attribute, 'unique', $valueData);
+            if ($result && $result->getId() !== $data->getId() && $result->getFamilyCode() === $data->getFamilyCode()) {
+                $this->buildAttributeViolation($context, $attribute, 'unique', $valueData);
             }
 
             return;
@@ -133,8 +133,8 @@ class DataValidator extends ConstraintValidator
             if (!$value->getData()) {
                 continue; // @warning this should not occur ! Log an error
             }
-            if ($value->getData()->getId() !== $data->getId()) {
-                $this->buildAttributeViolation($data, $context, $attribute, 'unique', $valueData);
+            if ($value->getData()->getId() !== $data->getId() && $value->getData()->getFamilyCode() === $data->getFamilyCode()) {
+                $this->buildAttributeViolation($context, $attribute, 'unique', $valueData);
 
                 return;
             }
